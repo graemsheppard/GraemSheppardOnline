@@ -1,0 +1,171 @@
+﻿@model GraemSheppardOnline.ViewModels.ContactVM
+
+@{
+    ViewData["Title"] = "Contact";
+}
+<link rel="stylesheet" href="~/css/home.css" type="text/css" />
+<div class="container main-container">
+    <div class="row">
+        <div class="col-12">
+            <div class="row">
+                <div class="col-12">
+                    <h2>Contact Me</h2>
+                </div>
+                <div class="col-12">
+                    <div id="loader" class="loader-container" style="display: none">
+                        <div class="loader"></div>
+                    </div>
+                    <h4 id="error" style="display: none"><i class="text-danger">error</i></h4>
+                    <h4 id="success" style="display: none"><i class="text-success">success</i></h4>
+                    <h4 id="loading" style="display: none"><i>loading</i></h4>
+                </div>
+                <div class="col-12">
+                    <hr />
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="d-flex align-bottom">
+                        <div class="social-icon" id="linked-in-icon" data-scroll-mult="1.5" onclick="window.location='https://linkedin.com/in/graemsheppard'">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="social-icon" id="github-icon" data-scroll-mult="1.675" onclick="window.location='https://github.com/graemsheppard'">
+                            <i class="fab fa-github-square"></i>
+                        </div>
+                        <div class="social-icon" id="gmail-icon" data-scroll-mult="2" onclick="window.location='/Home/Contact'">
+                            <i class="fas fa-envelope-square"></i>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+
+                </div>
+
+            </div>
+
+            <form id="contact-form" method="post">
+                <div class="row">
+                    <div class="col-12">
+                        <div asp-validation-summary="All" class="validation-summary text-danger"></div>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+
+                        <hr />
+                        <i>(Optional)</i>
+                        <div class="form-group mt-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label asp-for="Message.Name" class="control-label">Name</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input asp-for="Message.Name" class="form-control" />
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label asp-for="Message.Email" class="control-label">Email</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input asp-for="Message.Email" class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-12">
+                        <hr />
+                        <i>(Required)</i>
+                        <div class="form-group mt-3">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label asp-for="Message.Subject" class="control-label">Subject</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input asp-for="Message.Subject" required class="form-control" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-12">
+                                    <label asp-for="Message.Body" class="control-label">Body</label>
+                                </div>
+                                <div class="col-12">
+                                    <textarea asp-for="Message.Body" class="email-body" maxlength="300" required></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="spacer">&nbsp;</div>
+                <div class="row">
+                    
+                    <div class="col-12">
+                        <button class="btn btn-outline-light" type="button" onclick="location.href='/Home'">Back</button>
+                        <button class="btn btn-light" type="submit">Submit</button>
+                    </div>
+                </div>
+
+            </form>
+            <div class="spacer">&nbsp;</div>
+            <hr />
+            <button class="btn btn-outline-light" type="button" onclick="location.href='/Home'" id="home-button" style="display: none">Home</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script>
+        
+        $("#linked-in-icon").hover(function () {
+            $("#link-preview").text("linkedin.com/in/graemsheppard");
+        });
+        $("#github-icon").hover(function () {
+            $("#link-preview").text("github.com/graemsheppard");
+        });
+        $("#gmail-icon").hover(function () {
+            $("#link-preview").text("contact@graemsheppard.com");
+        });
+        $(".social-icon").hover(function () {
+            
+        }, function () {
+                $("#link-preview").text("");
+        });
+
+        $("#contact-form").submit(function () {
+            event.preventDefault();
+            $(this).slideUp(550);
+            $(this).prop('disabled', true);
+            $("#loader").show();
+            $("#loading").show();
+            setTimeout(function () {
+                $.post(location.href, $('form#contact-form').serialize())
+                .done(function () {
+                    console.log("Success");
+                    $("#success").show();
+                })
+                .fail(function () {
+                    console.log("Error");
+                    $("#error").show();
+                })
+                .always(function () {
+                    $("#loader").hide();
+                    $("#loading").hide();
+                    $("#home-button").show();
+                });
+            }, 1200)
+            
+        });
+
+    </script>
+    
+}

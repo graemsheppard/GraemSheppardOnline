@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+	<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+	<UserSecretsId>3cfffe3c-b0ac-40dd-ba2f-7c576b303a23</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="2.9.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.8" />
+    <PackageReference Include="Microsoft.jQuery.Unobtrusive.Ajax" Version="3.2.6" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+    <PackageReference Include="MongoDB.Bson" Version="2.11.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.11.2" />
+    <PackageReference Include="MongoDB.Driver.GridFS" Version="2.11.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\css\_tile.css" />
+    <None Include="wwwroot\images\home_parallax_1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Views\Shared\imgs\" />
+    <Folder Include="Views\FileManager\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\favicon.ico">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+    </Content>
+  </ItemGroup>
+
+</Project>

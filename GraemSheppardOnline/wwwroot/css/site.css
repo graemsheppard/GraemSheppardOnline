@@ -1,0 +1,208 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 0px;
+    margin-top: 0px;
+    background: none;
+}
+
+body * :not(a){
+    color: #EEEEEE;
+    font-family: "Courier Prime", 'Courier New', monospace;
+}
+
+html {
+    scroll-behavior: smooth;
+
+}
+
+
+
+hr {
+    background-color: #EEEEEE;
+}
+
+
+input[type='checkbox'] {
+    transform: scale(1.5);
+}
+
+.bottom-fade {
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    height: 15vh;
+    width: 100vw;
+    background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0,0,0,0));
+    pointer-events: none;
+}
+
+
+.button-width {
+    width: 85px !important;
+}
+
+
+.main-image {
+    top: 0;
+    height: 100vh;
+    position: fixed;
+    background-color: black;
+}
+
+.main-image img {
+    opacity: 0.15;
+}
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 55px;
+    margin-bottom: 20vh;
+}
+
+.dropdown-menu {
+    border-color: #EEEEEE !important;
+    background-color: #303030 !important;
+}
+
+.dropdown-menu * {
+    color: #EEEEEE !important;
+}
+
+.dropdown-item:hover, .dropdown-item:focus {
+    
+    background-color: #202020 !important;
+    outline: none;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+/* The bar for next and previous search page */
+
+
+.validation-summary {
+    color: darkred;
+}
+
+.col-line {
+    margin-bottom: 20px;
+}
+
+.spacer {
+    height: 15px;
+}
+
+.full-width {
+    width: 100%;
+    margin: auto 0;
+}
+
+.no-margin {
+    margin: inherit 0;
+    padding: inherit 0;
+}
+.control-label {
+    font-size: 1.3em;
+    margin-top: 5px;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+
+.status-light {
+    width: 10px;
+    height: 10px;
+    border-radius: 5px;
+    float: right;
+    margin: 5px;
+}
+
+.jumbotron {
+    background-color: #303030;
+    color: white;
+}
+
+
+.main-container {
+    max-width: 600px !important;
+    margin: 100px auto auto auto !important;
+}
+
+
+
+.nav-container {
+    width: 100%;
+    max-width: 1140px;
+    margin: auto;
+}
+
+.bg-dark-1 {
+    background-color: rgba(0, 0, 0, 0.9) !important;
+    color: #EEEEEE !important;
+}
+
+.bg-dark-2 {
+    background-color: #303030 !important;
+    color: #EEEEEE !important;
+}
+
+
+.navbar-dark {
+    cursor: default;
+}
+
+.dropdown-buttons {
+    display: flex;
+}
+
+.dropdown-buttons>button {
+    margin: 10px;
+    flex-grow: 1;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropleft {
+    user-select: none !important;
+}
+
+
+@media screen and (min-width: 992px) {
+
+    .nav-login {
+        position: absolute;
+        right: 10px;
+    }
+
+}
+
+
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}

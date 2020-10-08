@@ -1,0 +1,31 @@
+﻿@model GraemSheppardOnline.ViewModels.UsersIndexVM.UsersIndexCard;
+
+
+
+<div class="tile-container" onclick="location.href='@Model.CardLink'">
+    <div class="tile-header bg-dark-1">
+        <div class="tile-row">
+            <div class="cell-6">
+                <strong>User</strong>
+            </div>
+            <div class="cell-6">
+                <div class="status-light @(Model.Status == 1 ? "sl-green" : "sl-red")"></div>
+            </div>
+        </div>
+    </div>
+            
+
+    <div class="tile-body bg-dark-2">
+        <div class="tile-row">
+            <div class="cell-12">
+                <strong>@Model.FirstName @Model.LastName</strong>
+            </div>
+        </div>
+        <div class="tile-row">
+            <div class="cell-12">
+                @Model.Email
+            </div>
+        </div>
+
+    </div>
+</div>

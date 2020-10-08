@@ -1,0 +1,25 @@
+﻿@model GraemSheppardOnline.ViewModels.FileIndexCard;
+
+
+
+<div class="tile-container" onclick="location.href='@Model.CardLink'">
+    <div class="tile-header bg-dark-1">
+        <div class="tile-row">
+            <div class="cell-6">
+                <strong>File</strong>
+            </div>
+            <div class="cell-6 text-right">
+                <i class="fa fa-download download-btn" onclick="location.href='/FileManager/Download/@Model.Id'"></i>
+            </div>
+        </div>
+    </div>
+    <div class="tile-body bg-dark-2">
+        <div class="tile-row">
+            <div class="cell-12">
+                <strong>@Model.Name</strong>
+            </div>
+        </div>
+    </div>
+</div>
+
+

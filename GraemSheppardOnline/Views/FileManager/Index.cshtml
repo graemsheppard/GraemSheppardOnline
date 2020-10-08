@@ -1,0 +1,99 @@
+﻿@model GraemSheppardOnline.ViewModels.FileMangerIndexVM;
+@using System.Text.Json;
+@using GraemSheppardOnline.ViewModels
+
+@{
+    ViewData["Title"] = "Index";
+}
+<link rel="stylesheet" href="~/css/_tile.css" type="text/css" />
+<div class="container main-container">
+    <div class="row">
+        <div class="col-12">
+            <h2>Files</h2>
+            <hr />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <button class="btn btn-outline-light" onclick="location.href='/FileManager/Create'">
+                <i class="fa fa-upload mr-2"></i>Upload
+            </button>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            <div class="input-group mt-3 mb-3">
+                <input class="form-control" placeholder="img.jpg" id="search-term">
+                <div class="input-group-append">
+                    <button disabled class="btn btn-outline-light" type="submit"><i class="fa fa-search"></i></button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <div class="row">
+        <div class="col-12">
+            <div id="results-view">
+               
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <i id="loading-icon" class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+</div>
+
+
+@section Scripts {
+    <script>
+        let page = 0;
+        let loading = false;
+        $(() => {
+            loadPartialView();
+
+            if ($(document).height() >= $(window).height()) {
+                scrollResults();
+            }
+
+            $(window).scroll(function () {
+                scrollResults();
+            });
+
+            $('#search-term').keyup(function () {
+                loadPartialView();
+            });
+
+        });
+
+        
+
+        function loadPartialView() {
+            $.get("/FileManager/GetResults", { search: $("#search-term").val(), page: 0 }, function (data) {
+                $("#results-view").html(data);
+                page = 0;
+            });
+        }
+
+        function scrollResults() {
+            if (loading == true) { return; }
+            if ($(window).scrollTop() + $(window).height() > $(document).height() - 20) {
+                loading = true;
+                $.get("/FileManager/GetResults", { search: $("#search-term").val(), page: ++page }, function (data) {
+                    if ($.trim(data)) {
+                        $("#results-view").append(data);
+                        loading = false;
+                    } else {
+                        $("#loading-icon").hide();
+                        loading = false;
+                    }
+
+                });
+            }
+        }</script>
+}
+

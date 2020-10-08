@@ -1,0 +1,111 @@
+﻿@model GraemSheppardOnline.ViewModels.AuthenticateVM
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Register</h2>
+            <hr />
+        </div>
+    </div>
+    <form method="post">
+        <div class="row">
+            <div class="col-12">
+                <div asp-validation-summary="All" class="validation-summary text-danger"></div>
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="FirstName" class="control-label text-nowrap">First Name</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="FirstName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="LastName" class="control-label text-nowrap">Last Name</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input asp-for="LastName" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="Email" class="control-label text-nowrap">Email</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input required asp-for="Email" type="email" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="Password" class="control-label text-nowrap">Password</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input required asp-for="Password" type="password" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <label asp-for="ConfirmPassword" class="control-label">Confirm Password</label>
+                        </div>
+                        <div class="col-md-8">
+                            <input required asp-for="ConfirmPassword" type="password" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p>Already have an account? <a href="/Login">Login</a></p>
+                <div class="spacer"></div>
+                <button class="btn btn-outline-light" type="submit">Register</button>
+            </div>
+        </div>
+        
+    </form>
+
+</div>
+
+

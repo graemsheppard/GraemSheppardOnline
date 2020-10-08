@@ -1,0 +1,66 @@
+﻿.tile-container {
+    color: white;
+    width: 100%;
+    margin: 20px 0;
+    border-radius: 8px;
+    user-select: none;
+    cursor: default;
+}
+
+.sl-green {
+    background-color: lawngreen !important;
+    box-shadow: 0 0 4px 2px lawngreen;
+}
+
+.sl-red {
+    background-color: red;
+    box-shadow: inset 0 0 5px darkred;
+}
+
+.sl-orange {
+    background-color: darkorange;
+    box-shadow: 0 0 4px 2px darkorange;
+}
+
+.tile-row {
+    width: 100%;
+    height: 22px;
+}
+
+.tile-row > * {
+    float: left;
+    
+}
+
+.cell-3 {
+    width: 25%;
+}
+
+.cell-4 {
+    width: 33.3333%;
+}
+
+.cell-6 {
+    width: 50%;
+}
+
+.cell-12 {
+    width: 100%;
+}
+
+.tile-container:hover {
+    box-shadow: 0 0 10px #37a3fe;
+}
+
+.tile-header {
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+    padding: 4px 4px 4px 8px;
+}
+
+.tile-body {
+    width: inherit;
+    border-radius: 0 0 8px 8px;
+    padding: 5px 8px 8px 8px;
+}
+

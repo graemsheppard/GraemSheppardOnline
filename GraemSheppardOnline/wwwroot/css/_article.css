@@ -1,0 +1,36 @@
+﻿.menu-button {
+    width: 40px;
+    height: 40px;
+
+}
+
+.article {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: -10px;
+    margin-right: -10px;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+.article hr {
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+
+.article h2 {
+    display: inline-block;
+    margin: -10px;
+    padding: 10px;
+}
+
+.article .article-content {
+    margin: -10px;
+    padding: 10px;
+}
+
+.article.editing {
+    box-shadow: 0 0 24px 4px rgba(34, 100, 182, 0.50);
+    border-radius: 8px;
+}

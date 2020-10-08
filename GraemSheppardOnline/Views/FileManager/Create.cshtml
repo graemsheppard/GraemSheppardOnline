@@ -1,0 +1,95 @@
+﻿@model GraemSheppardOnline.ViewModels.FileManagerCreateVM
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Files</h2>
+            <hr />
+        </div>
+    </div>
+    <form action="/FileManager/Create" method="post" enctype="multipart/form-data">
+        <input hidden required aria-hidden="true" asp-for="File" id="file-input" />
+        <div class="row">
+            <div class="col-12">
+                <div asp-validation-summary="All" class="validation-summary text-danger"></div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="File" class="control-label text-nowrap">File to Upload</label>
+                </div>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input required asp-for="Name" class="form-control" placeholder="Upload a file" id="file-name">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-light" type="button" id="file-browse">Browse</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="DisplayName" class="control-label text-nowrap">Display Name</label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="DisplayName" class=" form-control" placeholder="Give it a nice name" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="IsPublic" class="control-label text-nowrap">Public</label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="IsPublic" class="mt-2 form-check-input" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="IsImage" class="control-label text-nowrap">Image</label>
+                </div>
+                <div class="col-md-8">
+                    <input asp-for="IsImage" class="mt-2 form-check-input" />
+                </div>
+            </div>
+        </div>
+        <div class="spacer"></div>
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-outline-light button-width" type="button" onclick="location.href='/FileManager'">Back</button>
+                <button class="btn btn-outline-light button-width" type="submit">Submit</button>
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+@section Scripts {
+
+    <script>
+        $("#file-browse").click(function () {
+            $("#file-input").trigger("click");
+        });
+
+        $("#file-input").change(function () {
+            var filename = $(this).val().split("\\").pop();
+            $("#file-name").val(filename);
+        });
+    </script>
+}
+
+
+

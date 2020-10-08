@@ -1,0 +1,62 @@
+﻿@model GraemSheppardOnline.ViewModels.AccountVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>My Account</h2>
+            <hr />
+            <h3>@Model.FirstName @Model.LastName</h3>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <form action="/Account/Edit" method="post">
+        <input asp-for="Id" hidden readonly />
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label asp-for="FirstName" class="control-label text-nowrap">First Name</label>
+                </div>
+                <div class="col-md-9">
+                    <input asp-for="FirstName" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label asp-for="LastName" class="control-label text-nowrap">Last Name</label>
+                </div>
+                <div class="col-md-9">
+                    <input asp-for="LastName" class="form-control" />
+                </div>
+            </div>
+
+        </div>
+        <div class="form-group">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <label asp-for="Email" class="control-label text-nowrap">Email</label>
+                </div>
+                <div class="col-md-9">
+                    <input readonly asp-for="Email" class="form-control" />
+                </div>
+            </div>
+        </div>
+        <div class="spacer">&nbsp;</div>
+        <div class="row">
+            <div class="col-12">
+                <button class="btn btn-outline-light button-width" onclick="location.href='/Account/'">Cancel</button>
+                <button class="btn btn-outline-light button-width" type="submit">Submit</button>
+            </div>
+        </div>
+        
+    </form>
+</div>

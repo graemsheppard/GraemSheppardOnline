@@ -1,0 +1,93 @@
+﻿@model GraemSheppardOnline.ViewModels.UsersEditVM
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container main-container">
+
+    <div class="row">
+        <div class="col-12">
+            <h2>Users</h2>
+            <hr />
+            <h3>@Model.FirstName @Model.LastName</h3>
+        </div>
+    </div>
+    <div class="spacer"></div>
+    <form action="/Users/Edit/@Model.Id" method="POST">
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label asp-for="Role" class="control-label text-nowrap">Role</label>
+                        </div>
+                        <div class="col-md-9">
+                            @if (Model.Role == "Owner")
+                            {
+                                <input asp-for="Role" readonly class="form-control" />
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(x => x.Role, new SelectList(new[] { "User", "Admin" }), null, new { @class = "form-control"})
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label asp-for="FirstName" class="control-label text-nowrap">First Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input asp-for="FirstName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label asp-for="LastName" class="control-label text-nowrap">Last Name</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input asp-for="LastName" class="form-control" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="row">
+                <div class="col-12">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <label asp-for="Email" class="control-label text-nowrap">Email</label>
+                        </div>
+                        <div class="col-md-9">
+                            <input asp-for="Email" class="form-control" />
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <button class="btn btn-outline-dark button-width" onclick="location.href='/Users/Details/@Model.Id'">Cancel</button>
+        <button class="btn btn-dark button-width" type="submit">Submit</button>
+    </form>
+</div>
+
+
+

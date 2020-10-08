@@ -1,0 +1,167 @@
+﻿@model List<GraemSheppardOnline.ViewModels.ArticleVM>
+@using System.Security.Claims;
+@{
+    ViewData["Title"] = "Graem Sheppard - .NET Developer";
+}
+@{var userType = User.FindFirst(ClaimTypes.Role)?.Value; }
+
+<link rel="stylesheet" href="~/css/home.css" type="text/css" />
+<link rel="stylesheet" href="~/css/_article.css" type="text/css" />
+
+<div class="container">
+    <div class="main-header">
+
+        <h1 id="header-title" class="header-title" data-scroll-mult="0.75">graem sheppard.</h1>
+
+        <h4 id="header-mission" class="header-mission" data-scroll-mult="0.6">
+            Software engineering and fullstack development
+        </h4>
+        <span id="scroll-down">
+            <a href="#about" class="ca3-scroll-down-link ca3-scroll-down-arrow" data-ca3_iconfont="ETmodules"></a>
+        </span>
+        <div class="text-center social-icons">
+            <div class="social-icon" id="linked-in-icon" data-scroll-mult="1.5" onclick="window.location='https://linkedin.com/in/graemsheppard'">
+                <i class="fab fa-linkedin"></i>
+            </div>
+            <div class="social-icon" id="github-icon" data-scroll-mult="1.675" onclick="window.location='https://github.com/graemsheppard'">
+                <i class="fab fa-github-square"></i>
+            </div>
+            <div class="social-icon" id="gmail-icon" data-scroll-mult="2" onclick="window.location='/Home/Contact'">
+                <i class="fas fa-envelope-square"></i>
+            </div>
+        </div>
+
+
+
+
+    </div>
+
+    @if (Model != null)
+    {
+        <div style="height: 300px"></div>
+        <div id="about" style="height: 50px"></div>
+        if (Model[0] != null)
+        {
+            @await Html.PartialAsync("_Article", Model[0]);
+        }
+        <div class="row">
+            <div class="col-12 logos">
+                <img class="logo" src="~/images/home-mongodb.svg" alt="mongodb" />
+                <img class="logo" src="~/images/home-sql-server.svg" alt="sql server" />
+                <img class="logo" src="~/images/home-jquery.svg" alt="jquery" />
+                <img class="logo" src="~/images/home-net-core.svg" alt="asp .net core" />
+            </div>
+
+        </div>
+        <div style="height: 300px"></div>
+        <div id="experience" style="height: 50px"></div>
+        <div class="row">
+            <div class="col-lg">
+                @if (Model[1] != null)
+                {
+                    @await Html.PartialAsync("_Article", Model[1]);
+                }
+            </div>
+            <div class="col-md text-right">
+                <img class="mt-5 pt-4 w-100" src="~/images/home_coop.jpg" alt="co-op picture" />
+                <figcaption>The Lifco Hydraulics Summer 2020 Co-op Team.</figcaption>
+            </div>
+        </div>
+
+        <div style="height: 300px"></div>
+        <div id="future" style="height: 50px"></div>
+        if (Model[2] != null)
+        {
+            @await Html.PartialAsync("_Article", Model[2]);
+        }
+        <div class="row">
+            <div class="col-12 logos">
+                <img class="logo" src="~/images/home-django.svg" alt="django" />
+                <img class="logo" src="~/images/home-redis.svg" alt="redis" />
+                <img class="logo" src="~/images/home-python.svg" alt="python" />
+                <img class="logo" src="~/images/home-csharp.svg" alt="csharp" />
+            </div>
+
+        </div>
+    }
+
+
+</div>
+    
+
+
+
+@section Scripts {
+    
+    <script>
+        
+
+        $(".social-icon").each(function () {
+            $(this).attr("data-start-height", $(this).offset().top);
+        });
+        $("#header-mission").attr("data-start-height", $("#header-mission").offset().top);
+        $("#header-title").attr("data-start-height", $("#header-title").offset().top);
+
+        $(window).scroll($.throttle(1, function () {
+
+            if ($(window).scrollTop() > 0) {
+                $(".social-icon").each(function () {
+                    let newVal = (Number($(this).attr("data-start-height")) + $(this).attr("data-scroll-mult") * $(window).scrollTop());
+                    $(this).offset({ top: newVal });
+                });
+            }
+            
+
+            let newVal1 = (Number($("#header-mission").attr("data-start-height")) + $("#header-mission").attr("data-scroll-mult") * $(window).scrollTop())
+            $("#header-mission").offset({ top: newVal1 });
+            let newVal2 = (Number($("#header-title").attr("data-start-height")) + $("#header-title").attr("data-scroll-mult") * $(window).scrollTop())
+            $("#header-title").offset({ top: newVal2 });
+            $("#scroll-down *").css({ opacity: (1 - $(window).scrollTop() / 200) });
+            let bottom = $(window).scrollTop() + $(window).innerHeight();
+
+            $(".logos").each(function () {
+                let pos = $(this).offset().top + $(this).outerHeight();
+                let loaded = false;
+                if (!loaded && pos < bottom) {
+                    let time = 0;
+                    $(this).find(".logo").each(function () {
+                        var $this = $(this);
+                        setTimeout(function () {
+                            $this.animate({ opacity: 1 }, 600);
+                        }, time);
+                        time += 250;
+                    });
+                }
+            });
+            
+            if ($(window).scrollTop() > 500) {
+                
+                $(".social-icons").hide();
+            } else {
+                if ($(window).scrollTop() > 100) {
+                    $("#scroll-down").fadeOut();
+                } else {
+                    $("#scroll-down").fadeIn();
+                }
+                $(".social-icons").show();
+            }
+
+
+        }));
+
+
+        function loadLogos() {
+
+        }
+    </script>
+
+    @if (userType == "Admin" || userType == "Owner")
+    {
+        <script type="text/javascript" src="~/js/articleController.js"></script>
+    }
+}
+
+
+
+
+
